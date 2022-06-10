@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,116 @@
     <title>Weather Dashboard</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
-    <nav><h1>Weather Dashborad</h1></nav>
 
-    <div class="container"></div>
+<nav class="row col-lg-12">
+    <h1>Weather Dashboard</h1>
+</nav>
+
+<body class="row">
+
+
+    <aside class="searchSection col-lg-3">
+
+        <h2 id="asideh2">Search for a City:</h2>
+        <input type="text" placeholder="San Diego" id="searchInput">
+        <button id="searchButton">Search </button>
+    </aside>
+
+
+    <main class=>
+        <section class="topSection">
+            <section class="topSectionText">
+                <h2 id="city">Columbus</h2>
+
+                <ul>
+                    <li id="temp"></li>
+                    <li id="wind"></li>
+                    <li id="humidity"></li>
+                    <li id="uvIndex"></li>
+                </ul>
+
+            </section>
+
+
+
+        </section>
+
+        <section class="bottomSection">
+            <section class="col-lg-12" id="forecastSection">
+                <h2 id="fiveDayForecast">5-Day Forecast:</h2>
+
+            </section>
+
+
+            <section class="row col-lg-12" id="forecastDays">
+
+                <div class="col-lg-2">
+                    <h3 id="dayOne"></h3>
+                    <p id="icon"></p>
+
+                    <ul>
+                        <li id="temp2"></li>
+                        <li id="wind2"></li>
+                        <li id="humidity2"></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h3 id="daytwo"></h3>
+                    <p id="icon"></p>
+
+                    <ul>
+                        <li id="temp2"></li>
+                        <li id="wind2"></li>
+                        <li id="humidity2"></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h3 id="dayThree"></h3>
+                    <p id="icon"></p>
+
+                    <ul>
+                        <li id="temp2"></li>
+                        <li id="wind2"></li>
+                        <li id="humidity2"></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h3 id="dayFour"></h3>
+                    <p id="icon"></p>
+
+                    <ul>
+                        <li id="temp2"></li>
+                        <li id="wind2"></li>
+                        <li id="humidity2"></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h3 id="dayFive"></h3>
+                    <p id="icon"></p>
+
+                    <ul>
+                        <li id="temp2"></li>
+                        <li id="wind2"></li>
+                        <li id="humidity2"></li>
+                    </ul>
+                </div>
+
+
+            </section>
+
+        </section>
+
+
+
+
+
+
+    </main>
 
 
 
