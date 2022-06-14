@@ -70,6 +70,12 @@ var fifthDay = document.getElementById("dayFive")
 var iconFive = document.getElementById("iconFive")
 
 
+var asideList = document.getElementById("asideList")
+
+
+var asideLiELOne = document.getElementById("asideOne")
+
+
 
 
 
@@ -257,10 +263,19 @@ searchBtn.addEventListener("click", function () {
 
 
 
+
                
                  
 
             })
+
+            var buttonEl = document.createElement("button")
+
+            buttonEl.textContent = city
+
+            asideLiELOne.appendChild(buttonEl)
+
+            buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray")
 
 
 
