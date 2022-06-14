@@ -118,25 +118,51 @@ ul li {
 }
 
 
+
+.favorable {
+    background-color: green;
+}
+
+.moderate {
+    background-color: yellow;
+}
+
+.severe {
+    background-color: red;
+}
+
+
 #asideh2 {
     margin-top: 10px;
 
 }
+
+#asideList {
+    margin-top: 20px;
+    border-top: black 2px;
+    border-top-style: solid;
+}
+
 
 #city {
     margin-bottom: 10px;
 }
 
 #searchInput {
-    width: 80%;
-    height: 40px;
+    width: 100%;
+    height: 50px;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 #searchButton {
     background-color: lightblue;
     color: white;
-    width: 80%;
+    width: 100%;
+    padding: 8px 0px;
+    border-radius: 4px;
+
+
 }
 
 #forecastSection {
@@ -156,3 +182,17 @@ input {
     text-indent: 5%;
 }
 
+#uvIndex {
+    display: inline-flex;
+    
+
+}
+
+#uvNumber {
+    display: inline-flex;
+    border-radius: 4px;
+    padding: 2px 20px;
+    color: white;
+    
+
+}

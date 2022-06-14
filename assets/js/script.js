@@ -13,6 +13,8 @@ var humidityEl = document.getElementById("humidity")
 
 var uviEl = document.getElementById("uvIndex")
 
+var uviNumber = document.getElementById("uvNumber")
+
 var windEl = document.getElementById("wind")
 
 var TempEl2 = document.getElementById("temp2")
@@ -140,7 +142,13 @@ searchBtn.addEventListener("click", function () {
 
                 windEl.textContent = "Wind: " + fiveData.daily[0].wind_speed + " MPH"
 
-                uviEl.textContent = "UV Index: " + fiveData.daily[0].uvi
+               
+
+                uviEl.textContent = "UV Index: "
+
+                uviNumber.textContent = fiveData.daily[0].uvi
+
+                
 
                 humidityEl.textContent = "Humidity: " + data.main.humidity + "%"
 
@@ -261,6 +269,20 @@ searchBtn.addEventListener("click", function () {
                 humidityEl6.textContent = "Humidity: " + fiveData.daily[5].humidity + "%"
 
 
+                if (fiveData.daily[0].uvi<2) {
+
+                    uviNumber.classList.add("favorable")
+                }
+                else if (fiveData.daily[0].uvi<7) {
+                    uviNumber.classList.add("moderate")
+                }
+                else {
+
+                    uviNumber.classList.add("severe")
+
+                }
+
+
 
 
 
@@ -275,7 +297,7 @@ searchBtn.addEventListener("click", function () {
 
             asideLiELOne.appendChild(buttonEl)
 
-            buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray")
+            buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray; width: 100%")
 
 
 
