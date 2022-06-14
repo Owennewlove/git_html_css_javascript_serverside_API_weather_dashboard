@@ -35,6 +35,40 @@ var iconOne = document.getElementById("iconOne")
 
 var iconTwo = document.getElementById("iconTwo")
 
+var TempEl4 = document.getElementById("temp4")
+
+var humidityEl4 = document.getElementById("humidity4")
+
+var windEl4 = document.getElementById("wind4")
+
+var thirdDay = document.getElementById("dayThree")
+
+var iconThree = document.getElementById("iconThree")
+
+
+
+var TempEl5 = document.getElementById("temp5")
+
+var humidityEl5 = document.getElementById("humidity5")
+
+var windEl5 = document.getElementById("wind5")
+
+var fourthDay = document.getElementById("dayFour")
+
+var iconFour = document.getElementById("iconFour")
+
+
+
+var TempEl6 = document.getElementById("temp6")
+
+var humidityEl6 = document.getElementById("humidity6")
+
+var windEl6 = document.getElementById("wind6")
+
+var fifthDay = document.getElementById("dayFive")
+
+var iconFive = document.getElementById("iconFive")
+
 
 
 
@@ -128,13 +162,17 @@ searchBtn.addEventListener("click", function () {
                 humidityEl2.textContent = "Humidity: " + fiveData.daily[1].humidity + "%"
 
 
+
+
+
+
                 var Day2Date = moment.unix(fiveData.daily[2].dt).format("MM/DD/YYYY")
 
                 secondDay.innerHTML = Day2Date
 
                 var iconImage2=document.createElement("img")
 
-                iconImage2.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[1].weather[0].icon}@2x.png`)
+                iconImage2.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[2].weather[0].icon}@2x.png`)
                 
                 iconTwo.appendChild(iconImage2)
 
@@ -145,6 +183,77 @@ searchBtn.addEventListener("click", function () {
                 windEl3.textContent = "Wind: " + fiveData.daily[2].wind_speed + " MPH"
 
                 humidityEl3.textContent = "Humidity: " + fiveData.daily[2].humidity + "%"
+
+
+
+
+
+
+
+                var Day3Date = moment.unix(fiveData.daily[3].dt).format("MM/DD/YYYY")
+
+                thirdDay.innerHTML = Day3Date
+
+                var iconImage3=document.createElement("img")
+
+                iconImage3.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[3].weather[0].icon}@2x.png`)
+                
+                iconThree.appendChild(iconImage3)
+
+                
+
+                TempEl4.textContent= "Temp: " + fiveData.daily[3].temp.day + "°F"
+
+                windEl4.textContent = "Wind: " + fiveData.daily[3].wind_speed + " MPH"
+
+                humidityEl4.textContent = "Humidity: " + fiveData.daily[3].humidity + "%"
+
+
+
+
+
+
+                var Day4Date = moment.unix(fiveData.daily[4].dt).format("MM/DD/YYYY")
+
+                fourthDay.innerHTML = Day4Date
+
+                var iconImage4=document.createElement("img")
+
+                iconImage4.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[4].weather[0].icon}@2x.png`)
+                
+                iconFour.appendChild(iconImage4)
+
+                
+
+                TempEl5.textContent= "Temp: " + fiveData.daily[4].temp.day + "°F"
+
+                windEl5.textContent = "Wind: " + fiveData.daily[4].wind_speed + " MPH"
+
+                humidityEl5.textContent = "Humidity: " + fiveData.daily[4].humidity + "%"
+
+
+
+
+
+
+                var Day5Date = moment.unix(fiveData.daily[5].dt).format("MM/DD/YYYY")
+
+                fifthDay.innerHTML = Day5Date
+
+                var iconImage5=document.createElement("img")
+
+                iconImage5.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[5].weather[0].icon}@2x.png`)
+                
+                iconFive.appendChild(iconImage5)
+
+                
+
+                TempEl6.textContent= "Temp: " + fiveData.daily[5].temp.day + "°F"
+
+                windEl6.textContent = "Wind: " + fiveData.daily[5].wind_speed + " MPH"
+
+                humidityEl6.textContent = "Humidity: " + fiveData.daily[5].humidity + "%"
+
 
 
 
