@@ -31,6 +31,10 @@ var windEl3 = document.getElementById("wind3")
 
 var secondDay = document.getElementById("dayTwo")
 
+var iconOne = document.getElementById("iconOne")
+
+var iconTwo = document.getElementById("iconTwo")
+
 
 
 
@@ -102,6 +106,9 @@ searchBtn.addEventListener("click", function () {
 
                 localStorage.setItem("city", JSON.stringify(cities))
 
+
+
+
                 var Day1Date = moment.unix(fiveData.daily[1].dt).format("MM/DD/YYYY")
 
                 firstDay.innerHTML = Day1Date
@@ -138,6 +145,10 @@ searchBtn.addEventListener("click", function () {
                 windEl3.textContent = "Wind: " + fiveData.daily[2].wind_speed + " MPH"
 
                 humidityEl3.textContent = "Humidity: " + fiveData.daily[2].humidity + "%"
+
+
+
+               
                  
 
             })
