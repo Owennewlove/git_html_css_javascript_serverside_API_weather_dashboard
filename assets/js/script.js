@@ -75,7 +75,6 @@ var iconFive = document.getElementById("iconFive")
 var asideList = document.getElementById("asideList")
 
 
-var asideLiELOne = document.getElementById("asideOne")
 
 
 
@@ -103,17 +102,12 @@ function displaCitySearchList() {
 var searchInput = document.querySelector("input").value;
 
 
-
-
-var searchBtn = document.getElementById("searchButton")
-
-searchBtn.addEventListener("click", function () {
-
+function getData() {
 
     getVal();
     var city = getVal();
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey +"&units=imperial"
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial"
 
     fetch(queryURL)
         .then(function (response) {
@@ -123,185 +117,240 @@ searchBtn.addEventListener("click", function () {
         .then(function (data) {
 
 
-            var fiveDayUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${APIKey}&units=imperial
+            var fiveDayUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${APIKey}&units=imperial
             `
             fetch(fiveDayUrl)
-            .then(function(response){
-                return response.json()
-            })
-            .then(function(fiveData){
-                console.log(fiveData)
-                var currentDate= moment.unix(data.dt).format("MM/DD/YYYY")
-                var iconImage=document.createElement("img")
-                iconImage.setAttribute("src",`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
-                topSectionCity.innerHTML=  data.name + " ("+ currentDate + ")"
-                topSectionCity.appendChild(iconImage)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (fiveData) {
+                    console.log(fiveData)
+                    var currentDate = moment.unix(data.dt).format("MM/DD/YYYY")
+                    var iconImage = document.createElement("img")
+                    iconImage.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
+                    topSectionCity.innerHTML = data.name + " (" + currentDate + ")"
+                    topSectionCity.appendChild(iconImage)
 
-                
-                TempEl.textContent= "Temp: " + data.main.temp + "°F"
 
-                windEl.textContent = "Wind: " + fiveData.daily[0].wind_speed + " MPH"
+                    TempEl.textContent = "Temp: " + data.main.temp + "°F"
 
-               
+                    windEl.textContent = "Wind: " + fiveData.daily[0].wind_speed + " MPH"
 
-                uviEl.textContent = "UV Index: "
 
-                uviNumber.textContent = fiveData.daily[0].uvi
 
-                
+                    uviEl.textContent = "UV Index: "
 
-                humidityEl.textContent = "Humidity: " + data.main.humidity + "%"
+                    uviNumber.textContent = fiveData.daily[0].uvi
 
-                localStorage.setItem("city", JSON.stringify(cities))
 
 
+                    humidityEl.textContent = "Humidity: " + data.main.humidity + "%"
 
+                    localStorage.setItem("city", JSON.stringify(cities))
 
-                var Day1Date = moment.unix(fiveData.daily[1].dt).format("MM/DD/YYYY")
 
-                firstDay.innerHTML = Day1Date
 
-                var iconImage1=document.createElement("img")
 
-                iconImage1.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[1].weather[0].icon}@2x.png`)
-                
-                iconOne.appendChild(iconImage1)
+                    var Day1Date = moment.unix(fiveData.daily[1].dt).format("MM/DD/YYYY")
 
-                
+                    firstDay.innerHTML = Day1Date
 
-                TempEl2.textContent= "Temp: " + fiveData.daily[1].temp.day + "°F"
+                    if (iconOne.hasChildNodes()) {
+                        iconOne.removeChild(iconOne.children[0])
+                    }
 
-                windEl2.textContent = "Wind: " + fiveData.daily[1].wind_speed + " MPH"
+                    var iconImage1 = document.createElement("img")
 
-                humidityEl2.textContent = "Humidity: " + fiveData.daily[1].humidity + "%"
+                    iconImage1.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[1].weather[0].icon}@2x.png`)
 
+                    iconOne.appendChild(iconImage1)
 
 
 
+                    TempEl2.textContent = "Temp: " + fiveData.daily[1].temp.day + "°F"
 
+                    windEl2.textContent = "Wind: " + fiveData.daily[1].wind_speed + " MPH"
 
-                var Day2Date = moment.unix(fiveData.daily[2].dt).format("MM/DD/YYYY")
+                    humidityEl2.textContent = "Humidity: " + fiveData.daily[1].humidity + "%"
 
-                secondDay.innerHTML = Day2Date
 
-                var iconImage2=document.createElement("img")
 
-                iconImage2.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[2].weather[0].icon}@2x.png`)
-                
-                iconTwo.appendChild(iconImage2)
 
-                
 
-                TempEl3.textContent= "Temp: " + fiveData.daily[2].temp.day + "°F"
 
-                windEl3.textContent = "Wind: " + fiveData.daily[2].wind_speed + " MPH"
+                    var Day2Date = moment.unix(fiveData.daily[2].dt).format("MM/DD/YYYY")
 
-                humidityEl3.textContent = "Humidity: " + fiveData.daily[2].humidity + "%"
+                    secondDay.innerHTML = Day2Date
 
+                    if (iconTwo.hasChildNodes()) {
+                        iconTwo.removeChild(iconTwo.children[0])
+                    }
 
+                    var iconImage2 = document.createElement("img")
 
+                    iconImage2.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[2].weather[0].icon}@2x.png`)
 
+                    iconTwo.appendChild(iconImage2)
 
 
 
-                var Day3Date = moment.unix(fiveData.daily[3].dt).format("MM/DD/YYYY")
+                    TempEl3.textContent = "Temp: " + fiveData.daily[2].temp.day + "°F"
 
-                thirdDay.innerHTML = Day3Date
+                    windEl3.textContent = "Wind: " + fiveData.daily[2].wind_speed + " MPH"
 
-                var iconImage3=document.createElement("img")
+                    humidityEl3.textContent = "Humidity: " + fiveData.daily[2].humidity + "%"
 
-                iconImage3.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[3].weather[0].icon}@2x.png`)
-                
-                iconThree.appendChild(iconImage3)
 
-                
 
-                TempEl4.textContent= "Temp: " + fiveData.daily[3].temp.day + "°F"
 
-                windEl4.textContent = "Wind: " + fiveData.daily[3].wind_speed + " MPH"
 
-                humidityEl4.textContent = "Humidity: " + fiveData.daily[3].humidity + "%"
 
 
+                    var Day3Date = moment.unix(fiveData.daily[3].dt).format("MM/DD/YYYY")
 
+                    thirdDay.innerHTML = Day3Date
 
+                    if (iconThree.hasChildNodes()) {
+                        iconThree.removeChild(iconThree.children[0])
+                    }
 
+                    var iconImage3 = document.createElement("img")
 
-                var Day4Date = moment.unix(fiveData.daily[4].dt).format("MM/DD/YYYY")
+                    iconImage3.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[3].weather[0].icon}@2x.png`)
 
-                fourthDay.innerHTML = Day4Date
+                    iconThree.appendChild(iconImage3)
 
-                var iconImage4=document.createElement("img")
 
-                iconImage4.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[4].weather[0].icon}@2x.png`)
-                
-                iconFour.appendChild(iconImage4)
 
-                
+                    TempEl4.textContent = "Temp: " + fiveData.daily[3].temp.day + "°F"
 
-                TempEl5.textContent= "Temp: " + fiveData.daily[4].temp.day + "°F"
+                    windEl4.textContent = "Wind: " + fiveData.daily[3].wind_speed + " MPH"
 
-                windEl5.textContent = "Wind: " + fiveData.daily[4].wind_speed + " MPH"
+                    humidityEl4.textContent = "Humidity: " + fiveData.daily[3].humidity + "%"
 
-                humidityEl5.textContent = "Humidity: " + fiveData.daily[4].humidity + "%"
 
 
 
 
 
+                    var Day4Date = moment.unix(fiveData.daily[4].dt).format("MM/DD/YYYY")
 
-                var Day5Date = moment.unix(fiveData.daily[5].dt).format("MM/DD/YYYY")
+                    fourthDay.innerHTML = Day4Date
 
-                fifthDay.innerHTML = Day5Date
+                    if (iconFour.hasChildNodes()) {
+                        iconFour.removeChild(iconFour.children[0])
+                    }
 
-                var iconImage5=document.createElement("img")
+                    var iconImage4 = document.createElement("img")
 
-                iconImage5.setAttribute("src",`http://openweathermap.org/img/wn/${fiveData.daily[5].weather[0].icon}@2x.png`)
-                
-                iconFive.appendChild(iconImage5)
+                    iconImage4.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[4].weather[0].icon}@2x.png`)
 
-                
+                    iconFour.appendChild(iconImage4)
 
-                TempEl6.textContent= "Temp: " + fiveData.daily[5].temp.day + "°F"
 
-                windEl6.textContent = "Wind: " + fiveData.daily[5].wind_speed + " MPH"
 
-                humidityEl6.textContent = "Humidity: " + fiveData.daily[5].humidity + "%"
+                    TempEl5.textContent = "Temp: " + fiveData.daily[4].temp.day + "°F"
 
+                    windEl5.textContent = "Wind: " + fiveData.daily[4].wind_speed + " MPH"
 
-                if (fiveData.daily[0].uvi<2) {
+                    humidityEl5.textContent = "Humidity: " + fiveData.daily[4].humidity + "%"
 
-                    uviNumber.classList.add("favorable")
-                }
-                else if (fiveData.daily[0].uvi<7) {
-                    uviNumber.classList.add("moderate")
-                }
-                else {
 
-                    uviNumber.classList.add("severe")
 
-                }
 
 
 
+                    var Day5Date = moment.unix(fiveData.daily[5].dt).format("MM/DD/YYYY")
 
+                    fifthDay.innerHTML = Day5Date
 
-               
-                 
+                    if (iconFive.hasChildNodes()) {
+                        iconFive.removeChild(iconFive.children[0])
+                    }
 
-            })
+                    var iconImage5 = document.createElement("img")
 
-            var buttonEl = document.createElement("button")
+                    iconImage5.setAttribute("src", `http://openweathermap.org/img/wn/${fiveData.daily[5].weather[0].icon}@2x.png`)
 
-            buttonEl.textContent = city
+                    iconFive.appendChild(iconImage5)
 
-            asideLiELOne.appendChild(buttonEl)
 
-            buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray; width: 100%")
+
+                    TempEl6.textContent = "Temp: " + fiveData.daily[5].temp.day + "°F"
+
+                    windEl6.textContent = "Wind: " + fiveData.daily[5].wind_speed + " MPH"
+
+                    humidityEl6.textContent = "Humidity: " + fiveData.daily[5].humidity + "%"
+
+
+                    if (fiveData.daily[0].uvi < 2) {
+
+                        uviNumber.classList.add("favorable")
+                    }
+                    else if (fiveData.daily[0].uvi < 7) {
+                        uviNumber.classList.add("moderate")
+                    }
+                    else {
+
+                        uviNumber.classList.add("severe")
+
+                    }
+
+
+
+
+
+
+
+
+                })
+
+
+
+
 
 
 
         });
+
+
+}
+
+var searchBtn = document.getElementById("searchButton")
+
+searchBtn.addEventListener("click", function () {
+
+    getData();
+
+    getVal();
+    var city = getVal();
+
+    cities.push(city)
+
+    localStorage.setItem("cities", cities)
+
+    var listEl = document.createElement("li")
+    var buttonEl = document.createElement("button")
+
+    asideList.appendChild(listEl)
+
+    listEl.appendChild(buttonEl)
+
+    buttonEl.textContent = city
+
+    buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray; width: 100%")
+
+    buttonEl.addEventListener("click", function () {
+
+
+
+
+
+
+    })
+
+
+
 
     console.log("clicked")
 
