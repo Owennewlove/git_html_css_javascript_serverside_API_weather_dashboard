@@ -21,12 +21,10 @@ h1 {
 
 
 aside {
-    border: 2px;
-    border-style: solid;
-    border-color: red;
 
     height: 100vh;
     text-align: center;
+    margin-left: 5px;
 
 
 }
@@ -95,9 +93,6 @@ ul li {
 .bottomSection {
     display: flex;
     flex-wrap: wrap;
-    border: 2px;
-    border-style: solid;
-    border-color: red;
     width: 95%;
     height: 55%;
     margin: 20px 0px 0px 30px;
@@ -109,9 +104,7 @@ ul li {
 .bottomSection div {
     background-color: navy;
     color: white;
-    border: 2px;
-    border-style: solid;
-    border-color: orange;
+
     height: 60%;
     margin: 120px 12px 10px 25px;
 
@@ -121,14 +114,18 @@ ul li {
 
 .favorable {
     background-color: green;
+    color: white;
 }
 
 .moderate {
     background-color: yellow;
+    color: black;
 }
 
 .severe {
     background-color: red;
+    color: white;
+
 }
 
 
@@ -192,7 +189,7 @@ input {
     display: inline-flex;
     border-radius: 4px;
     padding: 2px 20px;
-    color: white;
+    
     
 
 }

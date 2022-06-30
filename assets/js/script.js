@@ -75,7 +75,7 @@ var iconFive = document.getElementById("iconFive")
 var asideList = document.getElementById("asideList")
 
 
-
+var searchInputEl = document.getElementById("searchInput")
 
 
 
@@ -286,11 +286,16 @@ function getData() {
                     if (fiveData.daily[0].uvi < 2) {
 
                         uviNumber.classList.add("favorable")
+                        uviNumber.classList.remove("moderate", "severe");
+                        
                     }
                     else if (fiveData.daily[0].uvi < 7) {
                         uviNumber.classList.add("moderate")
+                        uviNumber.classList.remove("favorable", "severe");
+                        
+                        
                     }
-                    else {
+                    else if (fiveData.daily[0].uvi > 7){
 
                         uviNumber.classList.add("severe")
 
@@ -327,20 +332,47 @@ searchBtn.addEventListener("click", function () {
 
     cities.push(city)
 
-    localStorage.setItem("cities", cities)
+    localStorage.setItem("cities", JSON.stringify(cities));
 
     var listEl = document.createElement("li")
     var buttonEl = document.createElement("button")
 
-    asideList.appendChild(listEl)
 
-    listEl.appendChild(buttonEl)
+    function makeCityButtons() {
 
-    buttonEl.textContent = city
 
-    buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray; width: 100%")
+
+        asideList.appendChild(listEl)
+
+        listEl.appendChild(buttonEl)
+
+        buttonEl.textContent = city
+
+        buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray; width: 100%")
+
+    }
+
+    makeCityButtons();
+
+
+
 
     buttonEl.addEventListener("click", function () {
+
+        searchInputEl.value = buttonEl.textContent
+
+        searchBtn.click()
+
+        asideList.removeChild(asideList.lastChild)
+
+        let removed = cities.pop();
+
+        localStorage.setItem("cities", JSON.stringify(cities));
+
+
+
+
+
 
 
 
@@ -378,5 +410,75 @@ searchBtn.addEventListener("click", function () {
 
 
 })
+
+
+
+
+
+
+function init() {
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+
+    if (storedCities !== null) {
+        cities = storedCities
+    }
+
+    for (var i = 0; i < cities.length; i++) {
+        var city = cities[i]
+
+        function makeCityButtons() {
+
+
+            var listEl = document.createElement("li")
+            var buttonEl = document.createElement("button")
+        
+        
+        
+            asideList.appendChild(listEl)
+        
+            listEl.appendChild(buttonEl)
+        
+            buttonEl.textContent = city
+        
+            buttonEl.setAttribute("style", "padding: 5px 100px; border-radius: 4px; background-color: darkgray; width: 100%")
+
+            buttonEl.addEventListener("click", function () {
+
+                searchInputEl.value = buttonEl.textContent
+        
+                searchBtn.click()
+        
+                asideList.removeChild(asideList.lastChild)
+        
+                let removed = cities.pop();
+
+                localStorage.setItem("cities", JSON.stringify(cities));
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            })
+        
+        }
+
+        makeCityButtons();
+
+
+    }
+
+
+
+
+}
+
+init();
+
 
 displaCitySearchList();
