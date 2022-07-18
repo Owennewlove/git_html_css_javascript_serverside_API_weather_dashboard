@@ -27,7 +27,7 @@ The following links lead you to the github repository used when making this webs
 
 https://github.com/Owennewlove/git_html_css_javascript_serverside_API_weather_dashboard.git
 
-
+https://owennewlove.github.io/git_html_css_javascript_serverside_API_weather_dashboard/
 
     ```md
 ![alt text](./assets/images/06-server-side-apis-homework-demo.png)
