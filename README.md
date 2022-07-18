@@ -25,9 +25,9 @@ N/A
 
 The following links lead you to the github repository used when making this website as well as the website itself:
 
-https://github.com/Owennewlove/git_css_javascript_third-party_APIs_work_day_scheduler.git
+https://github.com/Owennewlove/git_html_css_javascript_serverside_API_weather_dashboard.git
 
-https://owennewlove.github.io/git_css_javascript_third-party_APIs_work_day_scheduler/
+
 
     ```md
 ![alt text](./assets/images/06-server-side-apis-homework-demo.png)
